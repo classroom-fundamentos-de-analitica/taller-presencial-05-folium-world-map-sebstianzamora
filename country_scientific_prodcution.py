@@ -1,7 +1,5 @@
 """Taller Presencial Evaluable"""
 
-# Importar librer
-
 import pandas as pd
 import folium
 
@@ -21,10 +19,6 @@ def remove_na_rows(affiliations):
     affiliations = affiliations.dropna(subset=["Affiliations"])
 
     return affiliations
-  
-
-
-  
 
 def add_countries_column(affiliations):
     """Transforma la columna 'Affiliations' a una lista de paises."""
@@ -42,9 +36,8 @@ def add_countries_column(affiliations):
     affiliations["countries"] = affiliations["countries"].str.join(", ")
 
     return affiliations
-  
-def clean_countries(affiliations):
 
+def clean_countries(affiliations):
     affiliations = affiliations.copy()
     affiliations["countries"] = affiliations["countries"].str.replace(
         "United States", "United States of America"
@@ -76,9 +69,7 @@ def plot_world_map(countries):
         key_on="feature.properties.name",
         fill_color="Greens",
     ).add_to(m)
-
     m.save("map.html")
-
 
 
 def main():
